@@ -1,11 +1,11 @@
-# Resonant scattering in two-flavored Sp(4) lattice gauge theories&mdash;Analysis workflow
+# Resonant scattering in two-flavored Sp(4) lattice gauge theories - Analysis workflow
 
 Code: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20638262.svg)](https://doi.org/10.5281/zenodo.20638262)
 Data: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20111459.svg)](https://doi.org/10.5281/zenodo.20111459)
 
 The workflow in this repository performs
 the analyses presented in the paper
-[Resonant scattering in two-flavored Sp(4) lattice gauge theories&mdash;Analysis workflow][paper].
+[Resonant scattering in two-flavored Sp(4) lattice gauge theories - Analysis workflow][paper].
 
 ## Requirements
 
@@ -53,6 +53,6 @@ trivial for someone not already familiar with the code.
 
 [datarelease]: https://doi.org/10.5281/zenodo.20111459
 [miniforge]: https://github.com/conda-forge/miniforge
-[paper]: https://doi.org/10.48550/arXiv.YYMM.XXXXX
+[paper]: https://doi.org/10.48550/arXiv.2606.14546
 [snakemake]: https://snakemake.github.io
 [texlive]: https://tug.org/texlive/
