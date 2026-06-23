@@ -11,6 +11,7 @@ function ensemble_table(h5file,outfile)
 
     fields = 11
     table = Array{Any}(undef, (length(ensembles),fields))
+    inds = Int[]
 
     for (i,ens) in enumerate(ensembles)
         # get autocorrelation times
@@ -28,7 +29,16 @@ function ensemble_table(h5file,outfile)
         T,L = read(h5dset[ens],"lattice")[1:2]
 
         # ensemble type
-        type = isapprox(m0,0.92) ? "heavy" : isapprox(m0,0.863) ? "medium" : "light" 
+        if isapprox(m0,0.92)
+            type = "heavy" 
+        elseif isapprox(m0,0.863)
+            type = "medium"
+        elseif isapprox(m0,0.867)
+            type = "light" 
+        else
+            # do not print ensemble if it is not used in the scattering analysis
+            continue
+        end
         table[i,1] = type
         table[i,2] = beta
         table[i,3] = m0
@@ -40,8 +50,12 @@ function ensemble_table(h5file,outfile)
         table[i,9] = MadrasSokal.errorstring(mean(Q),std(Q)/sqrt(Ncnf))
         table[i,10] = MadrasSokal.errorstring(τP...)
         table[i,11] = MadrasSokal.errorstring(τQ...)
+        # update list of indices
+        push!(inds,i)
     end
+    # remove rows that contain undefined data 
     # sort table 
+    table = table[inds,:]
     table = sortslices(table,dims=1, by=x->x[[2,3,4]])
     # set up table footer and header
     header = raw"""
